@@ -54,13 +54,17 @@ int main(){
             close(fd_p_f1[1]);
             read(fd_p_f1[0], &c, strlen(c));
             printf("F1: La stringa letta da P e': %s\n", c);
+            
             write(fd_f1_f2[1], &c, sizeof(c));
             printf("F1: Ho inviato la stringa ad F2\n");
+            
             read(fd_f1_f2[0], &sig, sizeof(sig));
             printf("F1: Ho ricevuto l'intero %d corrispondente alla stringa %s\n", sig, c);
+            
             read(fd_f1_f3[0], &f3, sizeof(f3));
             printf("F1: PID F3: %d", (int)f3);
-            kill(f3, sig);
+            
+           kill(f3, sig);
             printf("kill(%d,%d)", f3, sig);
 
 
@@ -87,7 +91,7 @@ int main(){
                 sgg = 2;
             }
             else{
-                perror("Errore nel signal.\n");
+                printf("Errore nel signal.\n");
             }
             write(fd_f1_f2[1], &sgg, sizeof(sgg));
             printf("F2: Ho mandato l'intero %d ad F1 corrispondente al signal %s", sgg, sig_to_convert);
