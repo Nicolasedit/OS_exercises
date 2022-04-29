@@ -23,7 +23,7 @@ int main(){
    F1 and F2 are child processes of P
    F3 is child of F1
    
-   1) P asks to insert a string that will be the signal to send to F3
+   1) P ask to insert a string that will be the signal to send to F3
    2) P sends the string to F1
    3) F1 sends the string to F2
    4) F2 translate the string to the int signal correspondant and sends it to F3
